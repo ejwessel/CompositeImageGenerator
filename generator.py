@@ -41,7 +41,8 @@ def list_to_string(list):
     for element in list:
         string += "-" + element
 
-    return string
+    # remove the first '-'
+    return string[1:]
 
 
 random.seed(0)
