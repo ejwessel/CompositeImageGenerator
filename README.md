@@ -1,11 +1,12 @@
-# llamapunks
+# CompositeImagesGenerator
 
 - all.png - Generated file with all images conslidated into one file
-- images - Directory with all the assets used to generate composite images
-- sprites - Individual composite images
-- generator.py - Code for generating the llamapunks
+- database.txt - CSV file with all the attributes
+- images/ - Directory with all the assets used to generate composite images
+- sprites/ - Individual composite images
+- generator.py - Code for generating the composite images
 
-Setting up venv
+Setting up `venv`
 ```
 virtualenv venv
 source venv/bin/activate
