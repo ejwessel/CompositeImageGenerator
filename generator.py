@@ -13,11 +13,11 @@ csv_name = 'database.txt'
 images_path = 'images'
 individual_image_path = 'sprites'
 all_generated_images = 'all.png'
-base_templates = 'base'
+base_templates = 'background'
 features = [
-    'eyes',
-    'head',
-    'mouth'
+    'body',
+    'shoulder',
+    'face'
 ]
 
 
@@ -53,6 +53,7 @@ feature_files = {
 for feature in features:
     path = os.path.join(images_path, feature)
     # [None] is a valid feature; nothing is applied
+    # TODO: handle if [None] is a valid feature given that some features are necessary
     feature_files[feature] = [None] + list_image_files(path)
 
 if output_individual_sprites and not os.path.exists(individual_image_path):
@@ -83,7 +84,7 @@ x = 0
 y = 0
 
 for (number, files) in enumerate(combinations):
-    print(f'Generating image {number+1}/{total}', end='\r')
+    print(f'Generating image {number+1}/{total} {files}')
 
     composite_image = Image.new(image_mode, image_size, )
     attributes_list = []
@@ -106,17 +107,15 @@ for (number, files) in enumerate(combinations):
         y += image_size[1]
 
     if output_individual_sprites:
-        # increase the size of the individual image 10x
         composite_image = composite_image.resize(
-            (composite_image.width * 10, composite_image.height * 10), 0)
+            (composite_image.width, composite_image.height), 0)
         composite_image.save(os.path.join(
             individual_image_path, f'img_{list_to_string(attributes_list)}.png'))
 
     csv_file.write(','.join(attributes_list) + '\n')
 
-# increase overall sprite sheet 10x
 spritesheet = spritesheet.resize(
-    (spritesheet.width * 10, spritesheet.height * 10), 0)
+    (spritesheet.width, spritesheet.height), 0)
 spritesheet.save(all_generated_images)
 
 csv_file.close()
