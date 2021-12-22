@@ -6,13 +6,14 @@
 - generated/ - Individual composite images
 - generator.py - Code for generating the composite images
 
-Setting up `venv`
+## Setting up `venv`
 ```
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Usage
 ```
 usage: generator.py [-h] [-a ALL] [--all-output ALL_OUTPUT] [-t TEMPLATE] [-f FEATURES] [--none-features NONE_FEATURES] [-m MODE] [--csv CSV]
                     [--input INPUT] [--output OUTPUT]
@@ -36,7 +37,7 @@ options:
   --output OUTPUT       the directory of the generated composite images (Default: 'generated')
 ```
 
-example:
+## Example:
 given that the body, shoulder, and face directories exist
 ```
 python generator.py -f body,shoulder,face
